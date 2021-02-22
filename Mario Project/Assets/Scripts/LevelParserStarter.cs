@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelParserStarter : MonoBehaviour
 {
@@ -17,9 +18,13 @@ public class LevelParserStarter : MonoBehaviour
 
     public Transform parentTransform;
 
+    [SerializeField] private Text CoinCounterText;
+    [SerializeField] private Text TimerText;
+
+    public float timeRemaining = 10;
+
     private int coinCount = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         RefreshParse();
@@ -27,6 +32,16 @@ public class LevelParserStarter : MonoBehaviour
 
     void Update()
     {
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            TimerText.text = (timeRemaining).ToString("0");
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -41,6 +56,7 @@ public class LevelParserStarter : MonoBehaviour
                 {
                     coinCount++;
                     Debug.Log(coinCount);
+                    CoinCounterText.text = coinCount.ToString();
                 }
             }
         }
