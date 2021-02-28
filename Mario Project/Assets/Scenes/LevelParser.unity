@@ -309,6 +309,7 @@ MonoBehaviour:
   Stone: {fileID: 75349972971917745, guid: 0ad919a699fa84398931eb5ac1ae449b, type: 3}
   Water: {fileID: 4945644835775629717, guid: 15232d7466fec43049362a829054619d, type: 3}
   Goal: {fileID: 5677637105132859920, guid: 3ee2d62cb4f0748119785e0c629dfb8f, type: 3}
+  Lava: {fileID: 1395174579985818620, guid: b692eb61788104d4d8b312eba842f6a4, type: 3}
   parentTransform: {fileID: 992824850}
   CoinCounterText: {fileID: 741422142}
   TimerText: {fileID: 776575447}

@@ -57,6 +57,14 @@ public class EthanCharacter : MonoBehaviour
             gameOverFunction();
             gameOver = false;
         }
+        if (collision.collider.gameObject.tag == "Lava")
+        {
+            Camera.main.transform.parent = null;
+            Destroy(this.gameObject);
+            gameOver = true;
+            gameOverFunction();
+            gameOver = false;
+        }
     }
 
     private void gameOverFunction()

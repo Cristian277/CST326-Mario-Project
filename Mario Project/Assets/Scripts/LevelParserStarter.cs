@@ -20,6 +20,8 @@ public class LevelParserStarter : MonoBehaviour
 
     public GameObject Goal;
 
+    public GameObject Lava;
+
     public Transform parentTransform;
 
     [SerializeField] private Text CoinCounterText;
@@ -118,6 +120,9 @@ public class LevelParserStarter : MonoBehaviour
                 break;
             case 'g':
                 ToSpawn = Goal;
+                break;
+            case 'l':
+                ToSpawn = Lava;
                 break;
             default:
                 return;
