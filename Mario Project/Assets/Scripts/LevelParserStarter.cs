@@ -16,13 +16,18 @@ public class LevelParserStarter : MonoBehaviour
 
     public GameObject Stone;
 
+    public GameObject Water;
+
+    public GameObject Goal;
+
     public Transform parentTransform;
 
     [SerializeField] private Text CoinCounterText;
     [SerializeField] private Text TimerText;
+    [SerializeField] private Text PointsText;
 
-    public float timeRemaining = 10;
-
+    public float timeRemaining = 100;
+    private int pointsCount = 0;
     private int coinCount = 0;
 
     void Start()
@@ -39,9 +44,11 @@ public class LevelParserStarter : MonoBehaviour
         }
         else
         {
+            Debug.Log("Player Failed.");
             Time.timeScale = 0f;
         }
 
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -60,6 +67,7 @@ public class LevelParserStarter : MonoBehaviour
                 }
             }
         }
+        */
     }
     private void FileParser()
     {
@@ -77,7 +85,7 @@ public class LevelParserStarter : MonoBehaviour
                 foreach (var letter in letters)
                 {
                     //Call SpawnPrefab
-                    SpawnPrefab(letter, new Vector3(column,-row,0));
+                    SpawnPrefab(letter, new Vector3(column, -row, (float)-0.5));
                     column++;
                 }
                 row++;
@@ -105,12 +113,32 @@ public class LevelParserStarter : MonoBehaviour
             case 's':
                 ToSpawn = Stone;
                 break;
+            case 'w':
+                ToSpawn = Water;
+                break;
+            case 'g':
+                ToSpawn = Goal;
+                break;
             default:
                 return;
         }
 
         ToSpawn = GameObject.Instantiate(ToSpawn, parentTransform);
         ToSpawn.transform.localPosition = positionToSpawn;
+    }
+
+    public void increaseCoinCount()
+    {
+        coinCount++;
+        pointsCount += 100;
+        CoinCounterText.text = coinCount.ToString();
+        PointsText.text = pointsCount.ToString();
+    }
+
+    public void increasePointCount()
+    {
+        pointsCount += 100;
+        PointsText.text = pointsCount.ToString();
     }
 
     public void RefreshParse()

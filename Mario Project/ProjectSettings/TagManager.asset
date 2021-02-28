@@ -8,6 +8,9 @@ TagManager:
   - QuestionBox
   - Stone
   - Brick
+  - Water
+  - Goal
+  - Ethan
   layers:
   - Default
   - TransparentFX
