@@ -27,6 +27,7 @@ public class EthanCharacter : MonoBehaviour
     //Set character rotation
     float y = (horizontal < 0) ? 180 : 0;
     Quaternion newRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, y, transform.rotation.eulerAngles.z);
+
     transform.rotation = newRotation;
 
     //Set character animation
@@ -78,5 +79,6 @@ public class EthanCharacter : MonoBehaviour
     void FixedUpdate()
   {
     if (jump) rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+        jumpForce = 4;
   }
 }
